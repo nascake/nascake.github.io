@@ -1,0 +1,607 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>开个蛋糕店赚nas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./resources/layui/css/layui.css">
+  <link rel="stylesheet" href="./resources/css/global.css">
+      
+      <style type="text/css">
+          .support {
+        
+
+              color: #7291a1;
+  
+              border: 1px solid #e6e9ea;
+              background: url("./resources/images/card_bg.png") no-repeat right top;
+              background-color: #fff;
+              margin-top: 8px;
+          }
+      
+      .support .support-title {
+          font-size: 14px;
+          margin-top: 8px;
+          
+      }
+      
+      
+      .button-botom {
+
+          margin-bottom: 8px;
+      }
+
+
+      .support-box {
+          font-size: 18px;
+          margin-top: 11px;
+          color: #00b07c;
+          font-family: HelveticaNeue, Helvetica, Arial, "Microsoft YaHei", sans-serif;
+      }
+      
+      
+  
+    
+          </style>
+      
+</head>
+<body>
+
+
+
+
+
+
+
+<div class="fly-header layui-bg-black">
+    <div class="layui-container">
+        
+        <ul class="layui-nav fly-nav layui-hide-xs" >
+            
+            <li class="layui-nav-item layui-this"><a href="index.html"><i
+                class="layui-icon">&#xe664;</i> 买个蛋糕吃出nas</a></li>
+            
+            
+            <li class="layui-nav-item"><a href="index.html"> <i
+                class="layui-icon"></i>
+            </a></li>
+            
+            <li class="layui-nav-item "><a href="shop.html"> <i
+                class="layui-icon">&#xe68e;</i> 开个蛋糕店赚nas
+            </a></li>
+        </ul>
+        
+        <ul class="layui-nav fly-nav-user">
+            
+            <li class="layui-nav-item">
+                <a href="javascript:void(0);" onclick="showhelp()">规则说明</a>
+            </li>
+            
+            <li class="layui-nav-item">
+                <a href="mailto:weizhitechinfo@163.com" target="_blank">联系我们</a>
+            </li>
+            
+
+        </ul>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="fly-panel fly-column">
+    <div class="layui-container">
+        <ul class="layui-clear">
+            <li class="layui-hide-xs layui-this"><a href="https://github.com/ChengOrangeJu/WebExtensionWallet" target="_blank"> 安装星云插件</a></li>
+              <li class="layui-hide-xs layui-this">点击“买一个”合约随机返回蛋糕，如为藏有nas的蛋糕（页面内加框）则获得奖励金额（上链10秒左右，请耐心等待）</li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="layui-container " align="center">
+
+
+
+<div class="layui-col-md6 button-botom">
+    
+         <button class="layui-btn layui-btn-warm" type="button" onclick="return false;" id="changeStore"> 换一家 </button>
+ 
+</div>
+
+
+<div class="layui-col-md6 button-botom">
+      <button class="layui-btn layui-btn-warm" type="button" onclick="return false;" id="buyCake"> 买一个 </button>
+      <input id="cakePrice" value="" type="hidden" />
+      <input id="roundCode" value="" type="hidden" />
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="fly-main" style="overflow: hidden;">
+    
+    
+ 
+ 
+ <div class="layui-row layui-col-space10 " align="center">
+     <div class="layui-col-md4  support" >
+         <div class="layui-col-md5">
+             
+             <img src="./resources/images/shop.png" height="70" width="70" />
+         </div>
+         
+         <div class="layui-col-md7 " align="left">
+             <div class="layui-col-md12 support-title">
+                 店铺编号
+             </div>
+             <div class="layui-col-md12  support-box">
+                 <div id="owner" style="line-height:26px;"> </div>
+             </div>
+         </div>
+     </div>
+     
+     <div class="layui-col-md4  support" >
+         <div class="layui-col-md5">
+             <img src="./resources/images/award.png" height="70" width="70" />
+         </div>
+         
+         <div class="layui-col-md7" align="left">
+             
+             
+             <div class="layui-col-md12 support-title">
+                 埋藏奖金
+             </div>
+             <div class="layui-col-md12 support-box">
+                 <div id="tnas" style="line-height:26px;"> </div>
+             </div>
+         </div>
+     </div>
+     
+     <div class="layui-col-md4  support" >
+         <div class="layui-col-md5">
+             <img src="./resources/images/price.png" height="70" width="70" />
+         </div>
+         
+         <div class="layui-col-md7" align="left">
+             
+             <div class="layui-col-md12 support-title">
+                 蛋糕价格
+             </div>
+             <div class="layui-col-md12 support-box">
+                 <div id="price" style="line-height:26px;"> </div>
+             </div>
+             
+         </div>
+     </div>
+ </div>
+ 
+ 
+ 
+
+<ul class="fly-case-list">
+    <li data-id="c1" id="1">
+        <a class="fly-case-img"  href="javascript:void(0);" >
+            <img src="./resources/images/cake_01.jpg" >
+         </a>
+    </li>
+    
+    <li data-id="c2" id="2">
+        <a class="fly-case-img" href="javascript:void(0);"  >
+            <img src="./resources/images/cake_02.jpg"  >
+                </a>
+        
+    </li>
+    
+    
+    <li data-id="c3"  id="3" >
+        <a class="fly-case-img" href="javascript:void(0);"  >
+            <img src="./resources/images/cake_03.jpg"  >
+                </a>
+        
+    </li>
+    
+  
+  <li data-id="c4" id="4">
+      <a class="fly-case-img" href="javascript:void(0);" >
+          <img src="./resources/images/cake_04.jpg" >
+              </a>
+  </li>
+  
+  <li data-id="c5" id="5">
+      <a class="fly-case-img" href="javascript:void(0);"  >
+          <img src="./resources/images/cake_05.jpg" >
+              </a>
+  </li>
+  
+  <li data-id="c6" id="6">
+      <a class="fly-case-img" href="javascript:void(0);"  >
+          <img src="./resources/images/cake_06.jpg" >
+              </a>
+  </li>
+  
+  <li data-id="c7" id="7">
+      <a class="fly-case-img" href="javascript:void(0);"  >
+          <img src="./resources/images/cake_07.jpg" >
+              </a>
+  </li>
+  
+  <li data-id="c8" id="8">
+      <a class="fly-case-img" href="javascript:void(0);"  >
+          <img src="./resources/images/cake_08.jpg" >
+              </a>
+  </li>
+  
+  
+</ul>
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>我的交易历史</legend>
+</fieldset>
+<table class='layui-table' lay-skin='line'  id="showRes">
+    <colgroup><col width='150'><col width='150'><col width='250'> <col></colgroup>
+    <thead><tr><th>购买店铺</th><th>花费</th><th>获得奖励</th><th>交易hash</th></tr>
+    </thead>
+    <tbody id="trades">
+    </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="fly-footer">
+    <p>Copyright ©星云蛋糕店</p>
+  <p>
+  Email:<a href="mailto:weizhitechinfo@163.com" target="_blank" class="">weizhitechinfo@163.com</a>
+  </p>
+</div>
+ 
+<script src="./resources/layui/layui.js"></script>
+<script src="./resources/js/lib/jquery-3.3.1.min.js"></script>
+<script src="./resources/js/lib/nebulas.js"></script>
+<script src="./resources/js/lib/nebPay.js"></script>
+
+
+
+<script>
+
+
+
+"use strict";
+
+
+var nebulas = require("nebulas"),
+Account = nebulas.Account,
+neb = new nebulas.Neb();
+neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+
+
+
+var NebPay = require("nebpay");
+var nebPay = new NebPay();
+
+
+var dappAddress = "n1qT55ZX6CJUqvvwxCwVjgVLaVoW6hBtkJE";
+
+//var dappAddress = "n1fEWvWvEtzPvMY9aRXQyojW5qh1q8FPvBL";
+
+
+
+
+
+
+
+function getWallectInfo(){
+    window.postMessage({
+                       "target": "contentscript",
+                       "data": {},
+                       "method": "getAccount",
+                       }, "*");
+                       
+                       
+                       
+                       window.addEventListener('message', function (e) {
+                                               if (e.data && e.data.data && e.data.data.account) {
+                                               var wallect =  e.data.data.account;
+                                               initInfo(wallect);
+                                               }
+                                               });
+}
+
+
+
+
+function initInfo(wallect){
+    var from = wallect;
+    var to = dappAddress;
+    var value = "0";
+    var callFunction = "getTadeItems";
+    var callArgs = "[\"" + from + "\"]"; //in the form of ["args"]
+    nebPay.simulateCall(to, value, callFunction, callArgs, {
+                        listener: showTrades
+                        });
+}
+
+
+function showTrades(resp){
+    
+    var trades = JSON.parse(resp.result);
+    
+    var html = "";
+    if(trades){
+        for (var i = 0; i <  trades.length; i++)
+        {
+            var record = trades[i];
+            html = html + "<tr><td>"+record.roundCode+"</td><td>"+record.price+"nas</td><td>"+record.winnas/1000000000000000000+"nas</td><td>"+record.tradeCode+"</td></tr>";
+        }
+    }
+    
+    $("#trades").html(html);
+    
+}
+
+
+
+
+
+
+
+
+
+getShopInfo();
+
+getWallectInfo();
+
+function getShopInfo(){
+    
+    load();
+    
+    var to = dappAddress;
+    var value = "0";
+    var callFunction = "getRandomItem";
+    var callArgs = "[\""  + "\"]"; //in the form of ["args"]
+    nebPay.simulateCall(to, value, callFunction, callArgs, {
+                        listener: showCake
+                        });
+}
+
+
+function showCake(resp) {
+    
+    
+    var roundItem = JSON.parse(resp.result);
+    var target = roundItem.target;
+    selectcake(target);
+    
+    
+    var tnas = roundItem.tnas;
+    var price = roundItem.price;
+    var owner = roundItem.owner;
+    var winnas = roundItem.winnas;
+    var roundCode = roundItem.roundCode;
+
+    var stnas = tnas/1000000000000000000;
+
+    $("#owner").html(roundCode);
+    $("#tnas").html(stnas+"nas");
+    $("#price").html(price+"nas");
+    $("#cakePrice").val(price);
+    $("#roundCode").val(roundCode);
+
+    cancelLoad();
+}
+
+
+
+function selectcake(id) {
+
+    for(var i=1 ; i<9 ; i++){
+        $("#"+i).removeClass();
+    }
+
+     $("#cakeid").val(id);
+     $("#"+id).addClass("layui-bg-orange");
+    
+}
+
+
+
+$("#changeStore").click(function(){
+    getShopInfo();
+ });
+                  
+
+$("#buyCake").click(function(){
+        var to = dappAddress;
+        var value = $("#cakePrice").val();
+        var callFunction = "buy";
+        var roundCode = $("#roundCode").val();
+
+                  
+                  
+                  
+                  var callArgs = "[\"" + roundCode + "\"]"; //
+                  
+           
+                  
+                  nebPay.call(to, value, callFunction, callArgs, {                                                     listener: show
+                                               });
+                  
+                    load();
+                    
+                  
+                  });
+                  
+               
+                  
+                  
+
+
+
+
+function queryTradeInfo(tradeCode){
+
+var to = dappAddress;
+var value = "0";
+var callFunction = "getTadeItem";
+var callArgs = "[\"" + tradeCode + "\"]";
+
+    nebPay.simulateCall(to, value, callFunction, callArgs, {
+                    listener: showRes
+                    });
+
+}
+
+
+function showRes(resp){
+    cancelLoad();
+    var tradeItem =  JSON.parse(resp.result);
+    var price = tradeItem.price;
+    var target = tradeItem.target;
+    var roundCode = tradeItem.roundCode;
+    var winnas = tradeItem.winnas;
+    var tip = "再接再励，您没有中奖哦";
+    if(winnas != 0){
+        tip = "恭喜您，获得"+winnas/1000000000000000000+"星云币";
+    }
+    var html = "<ul class='fly-case-list' align='center'><li data-id='123'><a class='fly-case-img' href='#' ><img src='./resources/images/cake_0"+target+".jpg' ></a>"+
+       "<h2>购买结果</h2><p class='fly-case-desc'>"+tip+"<br>"+"购买花费:"+price+"nas</p>"+"</li></ul>";
+    layui.use('layer', function(){
+              var layer = layui.layer;
+              
+              layer.open({
+                         type: 1,
+                         title: "您获得的蛋糕",
+                         closeBtn: 1,
+                         shadeClose: true,
+                          area: ['400px', '380px'],
+                         content: html,
+                         end: function(){
+                            location.reload();
+                         }
+                         });
+              
+              });
+    
+    
+}
+
+
+
+var intervalQuery
+var txhash
+
+
+
+function funcIntervalQuery() {
+    
+    neb.api.getTransactionReceipt(txhash).then( function (receipt) {
+                                               
+                                               console.log("response of tx: " + JSON.stringify(receipt));
+                                               
+                                               
+                                               
+                                               if( receipt.execute_error != ""){
+                                               
+                                                  alert(receipt.execute_result);
+                                                  clearInterval(intervalQuery);
+                                                  cancelLoad();
+                                               
+                                               }
+                                               
+                                               if( receipt.status === 1){
+                                               
+                                               queryTradeInfo(txhash);
+                                               clearInterval(intervalQuery);
+                                               
+                                               }
+                                               
+                                               });
+                                               
+}
+
+
+function show(resp){
+    console.log("response of push: " + JSON.stringify(resp));
+    txhash = resp.txhash
+    intervalQuery = setInterval(function () {
+                                funcIntervalQuery();
+                                }, 5000);
+    
+}
+
+
+function load(){
+    layui.use('layer', function(){
+              var layer = layui.layer;
+              
+              layer.load(1, {
+                         shade: [0.4,'#fff'] //0.1透明度的白色背景
+                         });
+              });
+}
+
+function cancelLoad(){
+    
+    layui.use('layer', function(){
+              var layer = layui.layer;
+              layer.closeAll('loading');
+              });
+
+}
+
+function showhelp(){
+    
+    layui.use('layer', function(){
+              var layer = layui.layer;
+              
+              layer.open({
+                         type: 1,
+                         title: "规则说明",
+                         closeBtn: 1,
+                         shadeClose: true,
+                         area: ['450px', '300px'],
+                         content: "<div style='line-height:26px;padding-right:20px;padding-left:15px;'><strong>开店：</strong>设定蛋糕的售卖价格，同时选择蛋糕藏入一定数量的星云币作为奖励金额，提交后开店完成。一个钱包同时可开多家店铺。<br><strong>盈利：</strong>购买者按蛋糕价格支付的nas直接进入开店者账户。<br><strong>破产：</strong>如果购买者所获得的蛋糕为藏有星云币的蛋糕，则获得蛋糕内星云币,店铺进入破产状态。<br><strong>挑选：</strong>买中藏有nas的蛋糕概率为1/8，可通过店铺切换对比蛋糕价格和奖励金额，选择合适的店铺进行购买。<br><strong>购买：</strong>按开店者设定的蛋糕价格支付,合约随机返回蛋糕，如其为藏有星云币的蛋糕则可获得内部所藏的nas。<br></div>"
+                         });
+              
+              });
+              
+}
+
+
+</script>
+
+
+
+</body>
+</html>
